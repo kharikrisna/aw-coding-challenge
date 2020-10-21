@@ -2,6 +2,13 @@
 @using SortDirection = CodingChallenge.DataAccess.SortDirection
 @model MovieListViewModel
 
+@using (Html.BeginForm())
+{
+    <p>
+      Find by Title : @Html.TextBox("SearchByTtile")
+        <input type="submit"  value="search" />
+    </p>
+}
 <table class="table table-striped grid-table">
     <thead>
         <tr>
@@ -25,6 +32,7 @@
 </table>
 <div class="grid-pager">
     <ul class="pagination">
+        
         @for (var i = 1; i <= Model.GridOptions.PageCount; i++)
         {
             if (i == Model.GridOptions.Page)

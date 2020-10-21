@@ -150,6 +150,9 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\global.scss" />
+    <Content Include="Library - Copy.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Library.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
