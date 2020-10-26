@@ -31,7 +31,7 @@ export class MovieComponent implements OnInit {
   }
 
   retriveMovies(){
-    const params = this.getRequestParams(this.title, this.page, this.pageSize);
+    const params = this.getRequestParams(this.title, this.sort, this.page, this.pageSize);
     this.movieSer.getMovies(params).subscribe(
       response => {
         const { movies, totalItems } = response;
@@ -45,24 +45,30 @@ export class MovieComponent implements OnInit {
   }
   handlePageChange(event) {
     this.page = event;
+    console.log(this.page);
     this.retriveMovies();
   }
 
   Sorting(event){
-      this.sort=event.target.value;
-      console.log(this.sort);
+    
+    this.sort=event.target.innerText;
+    this.retriveMovies();
+      console.log(event.target.innerText);
   }
   handlePageSizeChange(event) {
     this.pageSize = event.target.value;
     this.page = 1;
     this.retriveMovies();
   }
-  getRequestParams(searchTitle, page, pageSize) {
+  getRequestParams(searchTitle,sorting, page, pageSize) {
     // tslint:disable-next-line:prefer-const
     let params = {};
 
     if (searchTitle) {
       params[`SearchByTtile`] = searchTitle;
+    }
+    if(sorting){
+      params[`SortColumn`]=sorting;
     }
  
     if (page) {

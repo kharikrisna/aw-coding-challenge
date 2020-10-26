@@ -19,6 +19,7 @@ export class MoviesService {
   constructor(private httpClient: HttpClient) { }
 
   public getMovies(params):Observable<any>{
+    console.log(`https://localhost:44373/api/Movies`,{params});
     return this.httpClient.get<Movie[]>(`https://localhost:44373/api/Movies`,{params});
     // {
     //   observe:'response'

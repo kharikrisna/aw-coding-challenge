@@ -25,10 +25,10 @@
   <table class="movies">
           <thead>
           <tr>
-                  <th> ID </th>
-                  <th (click)="retriveMovies()">Title </th>
-                  <th> Year </th>
-                  <th> Rating </th>                
+                  <th (click)="Sorting($event)"> ID </th>
+                  <th (click)="Sorting($event)">Title </th>
+                  <th (click)="Sorting($event)"> Year </th>
+                  <th (click)="Sorting($event)"> Rating </th>                
           </tr>
           </thead>
           <tbody *ngFor="let movie of movies | paginate: {
