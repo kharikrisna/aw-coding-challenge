@@ -1,0 +1,60 @@
+
+  <div class="list row">
+        <div class="col-md-8">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search by title"
+              [(ngModel)]="title"
+             
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="retriveMovies()"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+<div class="movies">      
+  <table class="movies">
+          <thead>
+          <tr>
+                  <th> ID </th>
+                  <th (click)="retriveMovies()">Title </th>
+                  <th> Year </th>
+                  <th> Rating </th>                
+          </tr>
+          </thead>
+          <tbody *ngFor="let movie of movies | paginate: {
+                itemsPerPage: pageSize,
+                currentPage: page,
+                totalItems: count
+              }">
+                  <tr>
+                          <td>{{movie.id}}</td>
+                          <td> {{movie.title}} </td>
+                          <td> {{movie.year}} </td>
+                          <td> {{movie.rating}} </td>
+                  </tr>
+          </tbody>
+  </table>
+</div>
+  <div class="col-md-12">
+        <pagination-controls
+  previousLabel="Prev"
+  nextLabel="Next"
+  responsive="true"
+  (pageChange)="handlePageChange($event)"
+></pagination-controls>
+      </div>
+ 
+
+
+
+

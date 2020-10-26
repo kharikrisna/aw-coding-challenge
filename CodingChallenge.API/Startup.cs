@@ -34,6 +34,15 @@ namespace CodingChallenge.API
         {
             services.AddControllers();
             services.AddSingleton<ILibraryService, LibraryService>();
+            services.AddCors(opt =>
+            {
+                opt.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("*");
+
+                    });
+            });
             //services.AddSingleton(Configuration);
         }
 
@@ -48,6 +57,7 @@ namespace CodingChallenge.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 

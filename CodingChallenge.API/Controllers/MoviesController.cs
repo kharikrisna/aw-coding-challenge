@@ -31,7 +31,7 @@ namespace CodingChallenge.API.Controllers
             var model = new MovieListViewModel
             {
                 GridOptions = options,
-                Movies = LibraryService.SearchMovies(SearchByTtile, (options.Page - 1) * options.ItemsPerPage, options.ItemsPerPage, options.SortColumn).ToList()
+                Movies = LibraryService.SearchMovies(SearchByTtile, null, null, options.SortColumn).ToList()
             };
 
             return model.Movies;
